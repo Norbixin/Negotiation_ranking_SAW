@@ -231,6 +231,9 @@ class Ui_MainWindow(object):
         if name == "":
             return
         self.issues.append(Issue(name))
+        self.optionModel.issue_selected = len(self.issues) - 1
+        self.issueTable.selectionModel().select(self.issueTable.model().index(len(self.issues) - 1, 0),
+                                                QtCore.QItemSelectionModel.ClearAndSelect)
         self.issueModel.layoutChanged.emit()
         self.issueName.setText("")
         self.issueName.repaint()
